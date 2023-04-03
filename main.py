@@ -8,13 +8,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def query_records():
-    name = request.args.get('name')
-    print (name)
+    slug = request.args.get('slug')
+    print (slug)
     with open('./tmp/movie_full_src_999.json', 'r') as f:
         data = f.read()
         records = json.loads(data)
         for record in records:
-            if  record['name'] == name:
+            if  record['slug'] == slug:
                 return (record)
         
         # return jsonify(results)
