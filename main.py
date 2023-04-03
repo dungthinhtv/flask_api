@@ -66,4 +66,4 @@ def delte_record():
         f.write(json.dumps(new_records, indent=2))
     return jsonify(record)
 
-app.run(debug=True)
+app.run()
