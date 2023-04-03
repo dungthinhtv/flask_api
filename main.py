@@ -3,7 +3,6 @@
 import json
 from flask import Flask, request, jsonify
 from slugify import slugify
-import re
 
 app = Flask(__name__)
 
