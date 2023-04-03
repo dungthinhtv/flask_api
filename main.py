@@ -66,4 +66,5 @@ def delte_record():
         f.write(json.dumps(new_records, indent=2))
     return jsonify(record)
 
-app.run()
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
