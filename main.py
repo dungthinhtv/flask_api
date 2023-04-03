@@ -10,17 +10,15 @@ app = Flask(__name__)
 def query_records():
     name = request.args.get('name')
     print (name)
-    results = []
     with open('./tmp/movie_full_src_999.json', 'r') as f:
         data = f.read()
         records = json.loads(data)
         for record in records:
-            if  slugify(name) in slugify(record['name']):
-                results.append(record)
-                
+            if  record['name'] == name:
+                return (record)
         
-        return jsonify(results)
-        # return jsonify({'error': 'data not found'})
+        # return jsonify(results)
+        return jsonify({'error': 'data not found'})
 
 @app.route('/', methods=['PUT'])
 def create_record():
