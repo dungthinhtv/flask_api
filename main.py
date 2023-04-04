@@ -11,6 +11,16 @@ def query_all_records():
     data = json.load(open('./tmp/movie_title_100_detail.json'))
     
     return jsonify(data)
+
+@app.route('/title/', methods=['GET'])
+def query_title_records():
+    records = json.load(open('./tmp/movie_title_100_detail.json'))
+    titles = []
+    for record in records:
+        titles.append(record['name'])
+        
+    
+    return jsonify(titles)
     # with open('./tmp/movie_full_src_999.json', 'r') as f:
     #     data = f.read()
     #     records = json.loads(data)
@@ -30,6 +40,7 @@ def query_records():
     with open('./tmp/movie_title_100_detail.json', 'r') as f:
         data = f.read()
         records = json.loads(data)
+        
         for record in records:
             if  (record['slug'] in slug) and (str(record['year']) == year):
                 return (record)
