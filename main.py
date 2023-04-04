@@ -8,13 +8,13 @@ app = Flask(__name__)
 
 @app.route('/all/', methods=['GET'])
 def query_all_records():
-    data = json.load(open('./tmp/movie_title_100_detail.json'))
+    data = json.load(open('./tmp/movie_title_999_detail.json'))
     
     return jsonify(data)
 
 @app.route('/title/', methods=['GET'])
 def query_title_records():
-    records = json.load(open('./tmp/movie_title_100_detail.json'))
+    records = json.load(open('./tmp/movie_title_999_detail.json'))
     titles = []
     for record in records:
         titles.append(record['name']+ ' (' + str(record['year']) + ')')
@@ -37,7 +37,7 @@ def query_records():
     slug = request.args.get('slug')
     year = request.args.get('year')
     print (slug)
-    with open('./tmp/movie_title_100_detail.json', 'r') as f:
+    with open('./tmp/movie_title_999_detail.json', 'r') as f:
         data = f.read()
         records = json.loads(data)
         
@@ -51,14 +51,14 @@ def query_records():
 @app.route('/mv/', methods=['PUT'])
 def create_record():
     record = json.loads(request.data)
-    with open('/tmp/movie_title_100_detail.json', 'r') as f:
+    with open('/tmp/movie_title_999_detail.json', 'r') as f:
         data = f.read()
     if not data:
         records = [record]
     else:
         records = json.loads(data)
         records.append(record)
-    with open('/tmp/movie_title_100_detail.json', 'w') as f:
+    with open('/tmp/movie_title_999_detail.json', 'w') as f:
         f.write(json.dumps(records, indent=2))
     return jsonify(record)
 
@@ -66,14 +66,14 @@ def create_record():
 def update_record():
     record = json.loads(request.data)
     new_records = []
-    with open('/tmp/movie_title_100_detail.json', 'r') as f:
+    with open('/tmp/movie_title_999_detail.json', 'r') as f:
         data = f.read()
         records = json.loads(data)
     for r in records:
         if r['name'] == record['name']:
             r['email'] = record['email']
         new_records.append(r)
-    with open('/tmp/movie_title_100_detail.json', 'w') as f:
+    with open('/tmp/movie_title_999_detail.json', 'w') as f:
         f.write(json.dumps(new_records, indent=2))
     return jsonify(record)
     
@@ -81,14 +81,14 @@ def update_record():
 def delte_record():
     record = json.loads(request.data)
     new_records = []
-    with open('/tmp/movie_title_100_detail.json', 'r') as f:
+    with open('/tmp/movie_title_999_detail.json', 'r') as f:
         data = f.read()
         records = json.loads(data)
         for r in records:
             if r['name'] == record['name']:
                 continue
             new_records.append(r)
-    with open('/tmp/movie_title_100_detail.json', 'w') as f:
+    with open('/tmp/movie_title_999_detail.json', 'w') as f:
         f.write(json.dumps(new_records, indent=2))
     return jsonify(record)
 
