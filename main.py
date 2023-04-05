@@ -18,7 +18,7 @@ def query_title_records():
     titles = []
     for record in records:
         # titles.append(record['name']+ ' (' + str(record['year']) + ')')
-        titles.append(record)
+        titles.append({'name':record['name'],'year': record['year']})
         
     
     return jsonify(titles)
