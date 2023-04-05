@@ -17,7 +17,8 @@ def query_title_records():
     records = json.load(open('./tmp/movie_title_999_detail.json'))
     titles = []
     for record in records:
-        titles.append(record['name']+ ' (' + str(record['year']) + ')')
+        # titles.append(record['name']+ ' (' + str(record['year']) + ')')
+        titles.append(record)
         
     
     return jsonify(titles)
