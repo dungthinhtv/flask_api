@@ -14,7 +14,10 @@ def query_all_records():
 
 @app.route('/title/', methods=['GET'])
 def query_title_records():
-    id = int(request.args.get('id'))
+    if request.args.get('id'):
+        id = int(request.args.get('id'))
+    else:
+        id=0
     records = json.load(open('./tmp/movie_title_all_detail.json'))
     titles = []
     for record in records:
