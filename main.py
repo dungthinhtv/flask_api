@@ -19,7 +19,7 @@ def query_title_records():
     titles = []
     for record in records:
         # titles.append(record['name']+ ' (' + str(record['year']) + ')')
-        if len(titles)>10:
+        if len(titles)>12:
             break
         if (record['id'] >= id):
             titles.append(record)
