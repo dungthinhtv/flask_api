@@ -14,13 +14,16 @@ def query_all_records():
 
 @app.route('/title/', methods=['GET'])
 def query_title_records():
-    id = request.args.get('id')
+    id = int(request.args.get('id'))
     records = json.load(open('./tmp/movie_title_999_detail.json'))
     titles = []
     for record in records:
         # titles.append(record['name']+ ' (' + str(record['year']) + ')')
         if (record['id'] >= id):
             titles.append(record)
+            
+        if len(titles) >10:
+            break
         
     
     return jsonify(titles)
