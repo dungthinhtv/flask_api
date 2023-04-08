@@ -19,11 +19,7 @@ def query_title_records():
     titles = []
     for record in records:
         # titles.append(record['name']+ ' (' + str(record['year']) + ')')
-        if (record['id'] >= id):
-            titles.append(record)
-            
-        if len(titles) >10:
-            break
+        titles.append(record)
         
     
     return jsonify(titles)
