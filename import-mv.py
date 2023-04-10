@@ -13,7 +13,7 @@ data = json.load(f)
 # list
 for i in data:
     
-    if (i['id'] > 2526):
+    if (i['id'] > 2535):
     
     
         tmdb_res = requests.get('https://api.themoviedb.org/3/search/movie?api_key=10471161c6c1b74f6278ff73bfe95982&query='+i['name'])
