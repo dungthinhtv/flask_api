@@ -38,7 +38,20 @@ def query_title_records():
         
         # return jsonify(results)
         # return jsonify({'error': 'data not found'})
-
+@app.route('/idmv/', methods=['GET'])
+def query_records():
+    id = request.args.get('id')
+    
+    with open('./tmp/movie_title_all_detail.json', 'r') as f:
+        data = f.read()
+        records = json.loads(data)
+        
+        for record in records:
+            if  (record['id'] == id):
+                return (record)
+        
+        # return jsonify(results)
+        return jsonify({'error': 'data not found'})
 
 @app.route('/mv/', methods=['GET'])
 def query_records():
