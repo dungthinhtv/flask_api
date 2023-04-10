@@ -40,7 +40,7 @@ def query_title_records():
         # return jsonify({'error': 'data not found'})
 @app.route('/idmv/', methods=['GET'])
 def query_record():
-    id = request.args.get('id')
+    id = int(request.args.get('id'))
     
     with open('./tmp/movie_title_all_detail.json', 'r') as f:
         data = f.read()
