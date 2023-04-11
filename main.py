@@ -26,18 +26,18 @@ def query_title_records():
             break
         if (record['id'] >= id):
             titles.append(record)
+    return jsonify(titles)        
         
-    
-    return jsonify(titles)
-    # with open('./tmp/movie_full_src_999.json', 'r') as f:
-    #     data = f.read()
-    #     records = json.loads(data)
-    #     for record in records:
-    #         if  record['slug'] == slug:
-    #             return (record)
-        
-        # return jsonify(results)
-        # return jsonify({'error': 'data not found'})
+@app.route('/name/', methods=['GET'])
+def query_name_records():
+    name = request.args.get('name')
+    records = json.load(open('./tmp/movie_title_all_detail.json'))
+    names = []
+    for record in records:
+        if (record['name'] == name):
+            names.append(record)
+    return jsonify(names)
+
 @app.route('/idmv/', methods=['GET'])
 def query_record():
     id = int(request.args.get('id'))
