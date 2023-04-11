@@ -32,11 +32,9 @@ def query_title_records():
 def query_name_records():
     name = request.args.get('name')
     records = json.load(open('./tmp/movie_title_all_detail.json'))
-    names = []
     for record in records:
         if (record['name'] == name):
-            names.append(record)
-    return jsonify(names)
+            return (record)
 
 @app.route('/idmv/', methods=['GET'])
 def query_record():

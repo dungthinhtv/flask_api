@@ -13,7 +13,7 @@ data = json.load(f)
 # list
 for i in data:
     
-    if (i['id'] > 2567):
+    if (i['id'] > 3999):
     
     
         tmdb_res = requests.get('https://api.themoviedb.org/3/search/movie?api_key=10471161c6c1b74f6278ff73bfe95982&query='+i['name'])
@@ -24,6 +24,7 @@ for i in data:
         
         if (len(parse_json['results']) > 0):
             
+            print(i['id'])
             print(i['name'])
         
             id = parse_json['results'][0]['id']
@@ -39,7 +40,7 @@ for i in data:
             import_url = requests.get(url_imp)
             
             print (import_url.text)
-            print(str(idpm))
+            # print(str(idpm))
             
             time.sleep(5)
     
