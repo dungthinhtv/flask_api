@@ -28,12 +28,12 @@ def query_title_records():
             titles.append(record)
     return jsonify(titles)        
         
-@app.route('/name/', methods=['GET'])
+@app.route('/slug/', methods=['GET'])
 def query_name_records():
-    name = request.args.get('name')
+    name = request.args.get('slug')
     records = json.load(open('./tmp/movie_title_all_detail.json'))
     for record in records:
-        if (record['name'] == name):
+        if (record['slug'] == name):
             return (record)
 
 @app.route('/idmv/', methods=['GET'])
