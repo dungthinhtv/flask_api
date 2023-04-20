@@ -12,6 +12,18 @@ def query_all_records():
     
     return jsonify(data)
 
+@app.route('/idtv/', methods=['GET'])
+def query_title_records():
+    if request.args.get('name'):
+        name = request.args.get('name')
+        records = json.load(open('./tmp/3_series_poster_details.json'))
+        episode = []
+        for record in records:
+            if name.lower() in record['name'].lower():
+                episode.append(record)
+        return jsonify(episode)  
+    return "Episode not found"   
+
 @app.route('/title/', methods=['GET'])
 def query_title_records():
     if request.args.get('id'):
