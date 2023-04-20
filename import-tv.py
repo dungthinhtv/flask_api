@@ -14,7 +14,7 @@ data = json.load(f)
 # list
 for i in data:
     
-    if (i['idtv'] == 240):
+    if (i['idtv'] > 240):
         try: 
             tmdb_res = requests.get('https://api.themoviedb.org/3/search/tv?api_key=10471161c6c1b74f6278ff73bfe95982&query='+re.sub('\((.*?)\)','',str(i['name'])).strip())
             data = tmdb_res.text
@@ -25,7 +25,7 @@ for i in data:
                     id = parse_json['results'][0]['id']
                     # src = i['src1']
                     # idpm = i['idtv']
-                    url_imp = 'https://somot.one/web/tv/import-new.html?id=' + str(id) + '&idpm=' + str(i['idtv'])
+                    url_imp = 'https://somot.one/web/tv/import-new.html?id=' + str(id)
                     import_url = requests.get(url_imp)
                     
                     print (import_url.text)
