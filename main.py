@@ -24,6 +24,9 @@ def query_tv_records():
         for record in records:
             if name.lower() in record['name'].lower() and season.lower() in record['name'].lower():
                 episode.append(record)
+            elif name.lower() in record['name'].lower():
+                episode.append(record)
+                
         return jsonify(episode)  
     return "Episode not found"   
 
