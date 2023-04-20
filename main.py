@@ -3,8 +3,10 @@
 import json
 from flask import Flask, request, jsonify
 from slugify import slugify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/all/', methods=['GET'])
 def query_all_records():
