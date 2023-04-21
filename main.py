@@ -30,6 +30,9 @@ def query_tv_records():
             # elif name.lower() in record['name'].lower():
             #     episode.append(record)
                 
+        # response = jsonify(episodes)
+        # response.headers.add('Access-Control-Allow-Origin', '*')
+        # return response
         return jsonify(episodes)  
     return "Episode not found"   
 
