@@ -14,7 +14,7 @@ data = json.load(f)
 # list
 for i in data:
     
-    if (i['idtv'] > 498):
+    if (i['idtv'] > 535):
         try: 
             tmdb_res = requests.get('https://api.themoviedb.org/3/search/tv?api_key=10471161c6c1b74f6278ff73bfe95982&query='+re.sub('\((.*?)\)','',str(i['name'])).strip())
             data = tmdb_res.text
