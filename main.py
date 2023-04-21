@@ -19,10 +19,11 @@ def query_tv_records():
     if request.args.get('name'):
         name = request.args.get('name')
         season = request.args.get('season')
+        episode = request.args.get('episode')
         records = json.load(open('./tmp/3_series_poster_details.json'))
         episode = []
         for record in records:
-            if name.lower() in record['name'].lower() and season.lower() in record['name'].lower():
+            if (name.lower() in record['name'].lower()) and (season.lower() in record['name'].lower()) and (episode == record['episode']):
                 episode.append(record)
             # elif name.lower() in record['name'].lower():
             #     episode.append(record)
