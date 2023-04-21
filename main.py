@@ -23,12 +23,15 @@ def query_tv_records():
     episodes = []
     for record in records:
         if (name.lower() in record['name'].lower()):
-            if (season.lower() in record['name'].lower()):
-                if request.args.get('episode'):
-                    if (str(episode) == record['episode']):
+            if season:
+                if (season.lower() in record['name'].lower()):
+                    if episode:
+                        if (str(episode) == record['episode']):
+                            episodes.append(record)
+                    else:
                         episodes.append(record)
-                else:
-                    episodes.append(record)
+            else:
+                episodes.append(record)
             # elif name.lower() in record['name'].lower():
             #     episode.append(record)
             
