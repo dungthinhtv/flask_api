@@ -21,14 +21,16 @@ def query_tv_records():
         season = request.args.get('season')
         episode = request.args.get('episode')
         records = json.load(open('./tmp/3_series_poster_details.json'))
-        episode = []
+        episodes = []
         for record in records:
-            if (name.lower() in record['name'].lower()) and (season.lower() in record['name'].lower()) and (episode == record['episode']):
-                episode.append(record)
+            if (name.lower() in record['name'].lower()):
+                if (season.lower() in record['name'].lower()):
+                    if (str(episode) == record['episode']):
+                        episodes.append(record)
             # elif name.lower() in record['name'].lower():
             #     episode.append(record)
                 
-        return jsonify(episode)  
+        return jsonify(episodes)  
     return "Episode not found"   
 
 @app.route('/title/', methods=['GET'])
