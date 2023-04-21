@@ -16,25 +16,27 @@ def query_all_records():
 
 @app.route('/idtv/', methods=['GET'])
 def query_tv_records():
-    if request.args.get('name'):
-        name = request.args.get('name')
-        season = request.args.get('season')
-        episode = request.args.get('episode')
-        records = json.load(open('./tmp/3_series_poster_details.json'))
-        episodes = []
-        for record in records:
-            if (name.lower() in record['name'].lower()):
-                if (season.lower() in record['name'].lower()):
+    name = request.args.get('name')
+    season = request.args.get('season')
+    episode = request.args.get('episode')
+    records = json.load(open('./tmp/3_series_poster_details.json'))
+    episodes = []
+    for record in records:
+        if (name.lower() in record['name'].lower()):
+            if (season.lower() in record['name'].lower()):
+                if request.args.get('episode'):
                     if (str(episode) == record['episode']):
                         episodes.append(record)
+                else:
+                    episodes.append(record)
             # elif name.lower() in record['name'].lower():
             #     episode.append(record)
-                
-        response = jsonify(episodes)
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
-        # return jsonify(episodes)  
-    return "Episode not found"   
+            
+    response = jsonify(episodes)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+    # return jsonify(episodes)  
+    # return "Episode not found"   
 
 @app.route('/title/', methods=['GET'])
 def query_title_records():
