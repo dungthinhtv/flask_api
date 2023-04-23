@@ -1,6 +1,6 @@
 import requests
 import json
-import time
+from requests.exceptions import ConnectTimeout
   
 # Opening JSON file
 f = open('./tmp/movie_title_all_detail.json')
@@ -13,7 +13,8 @@ data = json.load(f)
 # list
 for i in data:
     
-    if (i['id'] >= 9000):
+    if i['id'] >= 0:
+    
         try: 
             tmdb_res = requests.get('https://api.themoviedb.org/3/search/movie?api_key=10471161c6c1b74f6278ff73bfe95982&query='+i['name'])
             data = tmdb_res.text
@@ -25,7 +26,11 @@ for i in data:
                     src = i['src1']
                     idpm = i['id']
                     url_imp = 'https://somot.one/web/movie/import-new.html?id=' + str(id) + '&urlpm=' + src + '&idpm=' + str(idpm)
-                    import_url = requests.get(url_imp)
+                    
+                    try:
+                        import_url = requests.get(url_imp, timeout=(2,10))
+                    except ConnectTimeout:
+                        print('Request has timed out')
                     
                     print (import_url.text)
                     # print(str(idpm))
