@@ -13,7 +13,7 @@ data = json.load(f)
 # list
 for i in data:
     
-    if i['id'] >= 0:
+    if i['id'] == 358:
     
         try: 
             tmdb_res = requests.get('https://api.themoviedb.org/3/search/movie?api_key=10471161c6c1b74f6278ff73bfe95982&query='+i['name'])
@@ -28,7 +28,7 @@ for i in data:
                     url_imp = 'https://somot.one/web/movie/import-new.html?id=' + str(id) + '&urlpm=' + src + '&idpm=' + str(idpm)
                     
                     try:
-                        import_url = requests.get(url_imp, timeout=(2,10))
+                        import_url = requests.get(url_imp, timeout=(10,30))
                     except ConnectTimeout:
                         print('Request has timed out')
                     
