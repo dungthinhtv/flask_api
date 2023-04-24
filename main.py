@@ -53,8 +53,8 @@ def query_title_records():
         # titles.append(record['name']+ ' (' + str(record['year']) + ')')
         # if len(titles)>12:
         #     break
-        if (record['id'] >= id):
-            titles.append(record)
+        # if (record['id'] >= id):
+        titles.append(record)
     return jsonify(titles)        
         
 @app.route('/slug/', methods=['GET'])
