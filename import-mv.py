@@ -3,7 +3,7 @@ import json
 from requests.exceptions import ConnectTimeout
   
 # Opening JSON file
-f = open('./tmp/movie_title_all_detail.json')
+f = open('./tmp/movie_title_page_1_20_detail.json')
   
 # returns JSON object as 
 # a dictionary
